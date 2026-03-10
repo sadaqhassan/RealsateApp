@@ -1,20 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { DummyImges } from '../helper'
-import { MoveLeft } from 'lucide-react'
+import { MoveLeft, MoveRight } from 'lucide-react'
 
 const SlideImages = () => {
-  return (
+    let [indexImage,setIndex] = useState(0) 
+
+    useEffect(()=>{
+        if(indexImage >= indexImage.length){
+            setIndex(0)
+        }
+    },[])
+return (
     <div>
         
         <div className=''>
             {
-                DummyImges.map((image,index)=>(
+            
                     <div className='flex'>
                         <button><MoveLeft/></button>
-                        <img src="" alt="" />
-                        <button><MoveRi/></button>
+                        <img src={DummyImges[indexImage]?.image} alt="" />
+                        <button onClick={()=>{setIndex(indexImage+1)}}><MoveRight/></button>
                     </div>
-                ))
+                
             }
         </div>
     </div>
