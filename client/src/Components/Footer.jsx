@@ -14,7 +14,7 @@ function Footer() {
             
             <footer className="flex flex-col items-center justify-around w-full py-16 text-sm bg-slate-50 text-gray-800/70">
             <p className='text-3xl font-bold text-cyan-600'> Samo RealState</p>
-                <p className="mt-4 text-center">Copyright © 2025 <a href="https://prebuiltui.com">Samo Real State</a>. All rights reservered.</p>
+                <p className="mt-4 text-center">Copyright © 2026 <a href="https://prebuiltui.com">Samo Real State</a>. All rights reservered.</p>
                 <div className="flex items-center gap-4 mt-6">
                     <a href="#" className="font-medium text-gray-800 hover:text-black transition-all">
                         Brand Guidelines
