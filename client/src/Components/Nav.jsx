@@ -8,7 +8,7 @@ const Nav = () => {
 
   return (
     <nav>
-      <div className='bg-gray-700 flex justify-between px-10 py-3  text-white font-bold'>
+      <div className='bg-gray-700 flex justify-between px-10 py-3  text-white text-sm'>
       <h1>Logo</h1>
 
       <div className='md:flex gap-3 items-center hidden '>
