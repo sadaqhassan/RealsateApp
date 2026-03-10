@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const Login = () => {
   const [state,setState] = useState("login")
   return (
+    <div  className='flex flex-col justify-center items-center my-10'>
     <div className='bg-white p-10 rounded shadow-2xl '>
       <h1 className='text-center font-bold py-4 text-xl md:text-2xl'>
         {
@@ -33,6 +34,7 @@ const Login = () => {
           </button>
         </div>
       
+    </div>
     </div>
   )
 }
