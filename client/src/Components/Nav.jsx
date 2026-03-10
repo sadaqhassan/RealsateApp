@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { MenuIcon } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Nav = () => {
   const [isOpen,setIsOpen] = useState(false)
-
+  const navigate = useNavigate()
   return (
     <nav>
       <div className='bg-gray-700 flex justify-between px-10 py-3  text-white text-sm'>
@@ -24,7 +24,7 @@ const Nav = () => {
       </div>
 
       <div className='flex gap-4'>
-      <button className='bg-cyan-600 px-2 py-1 rounded'>Login</button>
+      <button className='bg-cyan-600 px-2 py-1 rounded' onClick={()=>navigate('/login')}>Login</button>
       <button className='md:hidden' onClick={()=>setIsOpen(!isOpen)}><MenuIcon/></button>
       </div>
     </div>
