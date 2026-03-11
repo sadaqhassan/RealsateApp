@@ -7,10 +7,12 @@ import About from './Pages/About'
 import Login from './Pages/Login'
 import Houses from './Pages/Houses'
 import BuyingCenter from './Pages/BuyingCenter'
+import {Toaster} from 'react-hot-toast'
 
 const App = () => {
   return (
-    <div >
+    <div>
+      {<Toaster/>}
       <Nav/>
 
       <div className='px-10 mt-5'>

@@ -2,6 +2,32 @@ import React, { useState } from 'react'
 
 const Login = () => {
   const [state,setState] = useState("login")
+
+  //getUserData
+  const [inputData , setInputData] = useState("");
+
+  const  handleChange = async (e) => {
+    setInputData((prev)=>({
+      ...prev,
+      [e.target.name] : e.target.value
+    }))
+  }
+
+  //submit
+  const handleSubmit = async(e)=>{
+    e.preventDefault();
+
+    const res = await fetch("http://localhost:2000/api/user/register",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify(inputData)
+    })
+    const data = await res.json();
+    if(!data.success){
+      return 
+    } 
+  }
+
   return (
     <div  className='flex flex-col justify-center items-center my-10'>
     <div className='bg-white p-10 rounded shadow-2xl '>
@@ -11,9 +37,9 @@ const Login = () => {
         }
         </h1>
         <form action="" className='flex flex-col space-y-4'>
-        {state === "register" && <input className='bg-gray-100 px-2 py-2 rounded' type="text" name='Username' placeholder='Username'/>}
-          <input className='bg-gray-100 px-2 py-2 rounded' type="email" name='Email' placeholder='Email'/>
-          <input className='bg-gray-100 px-2 py-2 rounded' type="password" name='Password' placeholder='Password'/>
+        {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="text" name='Username' placeholder='Username'/>}
+          <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="email" name='Email' placeholder='Email'/>
+          <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="password" name='Password' placeholder='Password'/>
           <button className='w-full bg-cyan-600 text-white px-2 py-2 rounded'>Login</button>
         </form>
 
