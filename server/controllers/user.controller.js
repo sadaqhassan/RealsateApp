@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken'
 
 //registerApi
 
-export const RegiserApi = async(req,res)=>{
+export const RegisterApi = async(req,res)=>{
     const {email,password,username} = req.body
 
     if(!email || !password || !username){
@@ -58,7 +58,7 @@ export const LoginApi = async(req,res)=>{
         res.cookie("token",token,{
             httpOnly: true,
         });
-        
+
         return res.status(200).json({success:true,message:"login successfully"})
 
     } catch (error) {
