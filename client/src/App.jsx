@@ -6,6 +6,7 @@ import Footer from './Components/Footer'
 import About from './Pages/About'
 import Login from './Pages/Login'
 import Houses from './Pages/Houses'
+import BuyingCenter from './Pages/BuyingCenter'
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path='/about' element={<About/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/houses' element={<Houses/>}/>
+        <Route path='/buy' element={<BuyingCenter/>}/>
       </Routes>
       </div>
       <Footer/>
