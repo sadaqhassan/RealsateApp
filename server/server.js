@@ -1,4 +1,5 @@
 import express from 'express'
+import { configApp } from './configs/config.js';
 const app = express();
-dotenv.config();
+configApp(app);
 
