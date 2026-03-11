@@ -5,4 +5,5 @@ const app = express();
 
 configApp(app);
 
-mongodbConn()
+mongodbConn();
+
