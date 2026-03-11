@@ -18,8 +18,8 @@ const Nav = () => {
         <Link to='/about'>
           About
         </Link>
-        <Link to='/'>
-          Contect_me
+        <Link to='/houses'>
+          Houses
         </Link>
       </div>
 
@@ -39,7 +39,7 @@ const Nav = () => {
           About
         </Link>
         <Link to='/'>
-          Contect_me
+          Houses
         </Link>
       </div>
     }
