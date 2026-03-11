@@ -36,18 +36,22 @@ export const RegiserApi = async(req,res)=>{
 
 
 export const LoginApi = async(req,res)=>{
-    const {email,password,username} = req.body
+    const {email,password} = req.body
 
-    if(!email || !password || !username){
+    if(!email || !password ){
         return res.status(400).json({success:false,message:"plese fill all fields"})
     }
     try {
         const isExist = await USER.findOne({email});
         if(!isExist){
-            return res.status(400).json({success:false,message:"this user is exist"})
+            return res.status(400).json({success:false,message:"incorrect email or password"})
         }
 
-        const hashedPassword = bcrypt.hashSync(password,10);
+        const isCompare = bcrypt.compareSync(password,isExist.password);
+
+        if(isCompare){
+            return res.status(400).json({success:false,message:"incorrect email or password"})
+        }
 
         return res.status(400).json({success:false,message:"plese fill all fields"})
 
