@@ -3,23 +3,24 @@ import { DummyImges } from '../helper'
 import { MoveLeft, MoveRight } from 'lucide-react'
 
 const SlideImages = () => {
-    let [indexImage,setIndex] = useState(0) 
+    const [indexImage,setIndexImage] = useState(0) 
 
     useEffect(()=>{
-        if(indexImage >= indexImage.length){
-            setIndex(0)
-        }
-    },[])
+        if(indexImage >= DummyImges.length || indexImage < 0){
+            setIndexImage(0)
+        };
+        
+    },[indexImage])
 return (
     <div>
         
         <div className=''>
             {
             
-                    <div className='flex'>
-                        <button><MoveLeft/></button>
-                        <img src={DummyImges[indexImage]?.image} alt="" />
-                        <button onClick={()=>{setIndex(indexImage+1)}}><MoveRight/></button>
+                    <div className='flex flex-wrap gap-10 justify-center items-center'>
+                        <button  onClick={()=>{setIndexImage((prev)=>prev-1)}}><MoveLeft size={50}/></button>
+                        <img className='max-w-8xl rounded-4xl h-96 object-cover' src={DummyImges[indexImage]?.image} alt="" />
+                        <button  onClick={()=>{setIndexImage((prev)=>prev+1)}}><MoveRight size={50}/></button>
                     </div>
                 
             }
