@@ -1,6 +1,6 @@
 import { USER } from "../Model/user.model.js"
 import bcrypt from "bcryptjs"
-
+import jwt from 'jsonwebtoken'
 
 //registerApi
 
@@ -53,7 +53,13 @@ export const LoginApi = async(req,res)=>{
             return res.status(400).json({success:false,message:"incorrect email or password"})
         }
 
-        return res.status(400).json({success:false,message:"plese fill all fields"})
+        const token = jwt.sign({id:isExist._id},process.env.JWT_SECRET,{expiresIn:"1d"})
+
+        res.cookie("token",token,{
+            httpOnly: true,
+        });
+        
+        return res.status(200).json({success:true,message:"login successfully"})
 
     } catch (error) {
         res.status(500).json({success:false,message:"server error"})
