@@ -61,9 +61,9 @@ const Login = () => {
         }
         </h1>
         <form onSubmit={handleSubmit} action="" className='flex flex-col space-y-4'>
-        {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="text" name='Username' placeholder='Username'/>}
-          <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="email" name='Email' placeholder='Email'/>
-          <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="password" name='Password' placeholder='Password'/>
+        {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded' value={inputData?.username?.username || ""} onChange={handleChange} type="text" name='username' placeholder='Username'/>}
+          <input  className='bg-gray-100 px-2 py-2 rounded' value={inputData?.email?.email || ""} onChange={handleChange} type="email" name='email' placeholder='Email'/>
+          <input  className='bg-gray-100 px-2 py-2 rounded' value={inputData?.password?.password || ""} onChange={handleChange} type="password" name='password' placeholder='Password'/>
           <button className='w-full bg-cyan-600 text-white px-2 py-2 rounded'>Login</button>
         </form>
 
