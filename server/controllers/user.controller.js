@@ -59,9 +59,10 @@ export const LoginApi = async(req,res)=>{
 
         
         if(!isCompare){
-            isExist.atempts +=1
             if(isExist.atempts >= 5){
-                isExist.lockedUntill = Date.now()+1*60*1000
+                isExist.lockedUntill = Date.now()+60*1000
+            }else{
+                isExist.atempts += 1
             }
             await isExist.save()
             return res.status(400).json({success:false,message:"incorrect email or password"})
