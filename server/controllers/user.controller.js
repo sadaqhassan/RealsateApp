@@ -38,7 +38,7 @@ export const RegisterApi = async(req,res)=>{
 export const LoginApi = async(req,res)=>{
     const {email,password} = req.body
 
-    if(!email || !password ){
+    if(!email || !password){
         return res.status(400).json({success:false,message:"plese fill all fields"})
     }
     try {
@@ -49,7 +49,7 @@ export const LoginApi = async(req,res)=>{
 
         const isCompare = bcrypt.compareSync(password,isExist.password);
 
-        if(isCompare){
+        if(!isCompare){
             return res.status(400).json({success:false,message:"incorrect email or password"})
         }
 
