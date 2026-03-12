@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate()
   const [state,setState] = useState("login")
 
   //getUserData
@@ -16,16 +19,37 @@ const Login = () => {
   //submit
   const handleSubmit = async(e)=>{
     e.preventDefault();
+    console.log(inputData)
 
-    const res = await fetch("http://localhost:2000/api/user/register",{
+    if(state === "login"){
+      const res = await fetch("http://localhost:2000/api/user/login",{
       method:"POST",
       headers:{"content-type":"application/json"},
       body:JSON.stringify(inputData)
     })
     const data = await res.json();
     if(!data.success){
-      return 
-    } 
+      return toast.error(data.message)
+    }
+    if(data.success){
+      toast.success(data.message);
+      navigate('/houses')
+    }
+    }else{
+      const res = await fetch("http://localhost:2000/api/user/register",{
+      method:"POST",
+      headers:{"content-type":"application/json"},
+      body:JSON.stringify(inputData)
+    })
+    const data = await res.json();
+    if(!data.success){
+      return toast.error(data.message)
+    }
+    if(data.success){
+      toast.success(data.message);
+      setState("login")
+    }
+    }
   }
 
   return (
@@ -36,7 +60,7 @@ const Login = () => {
           state === "login" ? "Login" : "Register"
         }
         </h1>
-        <form action="" className='flex flex-col space-y-4'>
+        <form onSubmit={handleSubmit} action="" className='flex flex-col space-y-4'>
         {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="text" name='Username' placeholder='Username'/>}
           <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="email" name='Email' placeholder='Email'/>
           <input  className='bg-gray-100 px-2 py-2 rounded' onChange={handleChange} type="password" name='Password' placeholder='Password'/>
