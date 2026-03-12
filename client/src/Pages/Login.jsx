@@ -57,7 +57,7 @@ const Login = () => {
     <div className='bg-white p-10 rounded shadow-2xl '>
       <h1 className='text-center font-bold py-4 text-xl md:text-2xl'>
         {
-          state === "login" ? "Login" : "Register"
+          state === "login" ? "Login" : "register"
         }
         </h1>
         <form onSubmit={handleSubmit} action="" className='flex flex-col space-y-4'>
