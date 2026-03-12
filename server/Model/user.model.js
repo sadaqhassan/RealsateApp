@@ -13,6 +13,13 @@ const userModel = new mongoose.Schema({
         type:String,
         required:true
     },
+    atempts:{
+        type:Number,
+        default:0
+    },
+    lockedUntill:{
+        type:Number
+    },
 },{timestamps:true});
 
 export const USER = mongoose.model("user",userModel);
