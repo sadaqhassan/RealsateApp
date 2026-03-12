@@ -1,6 +1,7 @@
 import { USER } from "../Model/user.model.js"
 import bcrypt from "bcryptjs"
 import jwt from 'jsonwebtoken'
+import { trying } from "../utils/helper.js"
 
 //registerApi
 
@@ -38,6 +39,8 @@ export const RegisterApi = async(req,res)=>{
 export const LoginApi = async(req,res)=>{
     const {email,password} = req.body
 
+    trying(email);
+    
     if(!email || !password){
         return res.status(400).json({success:false,message:"plese fill all fields"})
     }
