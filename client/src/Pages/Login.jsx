@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useEffectEvent } from 'react';
+import { useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,8 +8,9 @@ const Login = () => {
   const navigate = useNavigate()
   const [state,setState] = useState("login")
 
+ 
   //getUserData
-  const [inputData , setInputData] = useState("");
+  const [inputData , setInputData] = useState({});
 
   const  handleChange = async (e) => {
     setInputData((prev)=>({
@@ -29,6 +32,7 @@ const Login = () => {
     })
     const data = await res.json();
     if(!data.success){
+      
       return toast.error(data.message)
     }
     if(data.success){
@@ -43,6 +47,8 @@ const Login = () => {
     })
     const data = await res.json();
     if(!data.success){
+      
+      console.log(count)
       return toast.error(data.message)
     }
     if(data.success){
@@ -60,12 +66,14 @@ const Login = () => {
           state === "login" ? "Login" : "register"
         }
         </h1>
-        <form onSubmit={handleSubmit} action="" className='flex flex-col space-y-4'>
-        {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded' value={inputData?.username? inputData.username : ""} onChange={handleChange} type="text" name='username' placeholder='Username'/>}
-          <input  className='bg-gray-100 px-2 py-2 rounded' value={inputData?.email ? inputData.email : ""} onChange={handleChange} type="email" name='email' placeholder='Email'/>
-          <input  className='bg-gray-100 px-2 py-2 rounded' value={inputData?.password? inputData.password : ""} onChange={handleChange} type="password" name='password' placeholder='Password'/>
-          <button className='w-full bg-cyan-600 text-white px-2 py-2 rounded'>Login</button>
-        </form>
+        <div  action="" className='flex flex-col space-y-4'>
+        {state === "register" && <input o className='bg-gray-100 px-2 py-2 rounded'  onChange={handleChange} type="text" name='username' placeholder='Username'/>}
+          <input  className='bg-gray-100 px-2 py-2 rounded'  onChange={handleChange} type="email" name='email' placeholder='Email'/>
+          <input  className='bg-gray-100 px-2 py-2 rounded'  onChange={handleChange} type="password" name='password' placeholder='Password'/>
+          
+          <button onClick={handleSubmit} className='w-full bg-cyan-600 text-white px-2 py-2 rounded'>Login</button>
+          
+        </div>
 
         <div className='text-sm flex gap-2 mt-5'>
           <span>
