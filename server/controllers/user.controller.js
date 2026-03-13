@@ -57,10 +57,10 @@ export const LoginApi = async(req,res)=>{
 
         const isCompare = bcrypt.compareSync(password,isExist.password);
 
-        
         if(!isCompare){
             if(isExist.atempts >= 5){
-                isExist.lockedUntill = Date.now()+60*1000
+                isExist.lockedUntill = Date.now()+60*1000;
+                isExist.atempts = 0
             }else{
                 isExist.atempts += 1
             }
