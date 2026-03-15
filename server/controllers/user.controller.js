@@ -72,10 +72,10 @@ export const LoginApi = async(req,res)=>{
         isExist.atempts = 0
 
         const token = jwt.sign({id:isExist._id},process.env.JWT_SECRET,{expiresIn:"1d"})
-        res.cookie("token",token,{
+        return res.cookie("accessToken",token,{
             httpOnly: true,
-        })
-        return res.status(200).json({success:true,message:"login successfully"})
+        }).status(200).json({success:true,message:"login successfully"})
+        
 
     } catch (error) {
         console.log(error)
